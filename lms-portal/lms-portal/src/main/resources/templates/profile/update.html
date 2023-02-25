@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" xmlns:th="htttp://www.thymeleaf.org" th:replace="student/base-dashboard::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />	
+	<title>Document</title>
+</head>
+<body>
+	<section>
+		<!--Main container start -->
+		<main class="ttr-wrapper bg-primary">
+			<div class="container-fluid">
+				<form class="edit-profile m-b30"
+					th:action="@{/updateProfile/{id}(id=${profile.id})}"
+					th:object="${profile}" enctype="multipart/form-data" method="post">
+
+					<div class="container rounded bg-white mt-0 mb-5">
+						<div class="row">
+							<div class="col-md-3 border-right">
+								<div
+									class="d-flex flex-column align-items-center text-center p-3 py-5">
+									<img id="thumbnail" alt="Profile Image"
+										src="https://bootdey.com/img/Content/avatar/avatar7.png"
+										class="rounded-circle mt-5" width="150"> <label
+										class="font-weight-bold">Upload Image</label> <input
+										name="fileImage" type="file" class="form-control"
+										th:value="${profile.image}" id="fileImage"
+										accept="image/png,image/jpeg" required="required" />
+
+									<!-- <img class="rounded-circle mt-5"  class="rounded-circle"
+					src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQF2psCzfbB611rnUhxgMi-lc2oB78ykqDGYb4v83xQ1pAbhPiB&usqp=CAU"> -->
+
+									<!-- <span class="font-weight-bold">Amelly</span> <span
+					class="text-black-50">amelly12@bbb.com</span> <span> </span> -->
+
+								</div>
+							</div>
+							<div class="col-md-5 border-right">
+								<div class="p-3 py-5">
+									<div
+										class="d-flex justify-content-between align-items-center mb-3">
+										<h4 class="text-right">Profile Settings</h4>
+									</div>
+									<div class="row mt-2">
+										<div class="col-md-6">
+											<label class="labels">Name</label> <input
+												class="form-control" th:value="${profile.nikeName}"
+												type="text" name="nikeName" placeholder="Nike Name"
+												required="required" />
+										</div>
+										<div class="col-md-6">
+											<label class="labels">User-ID</label> <input
+												class="form-control" th:value="${profile.register}"
+												type="number" name="register" placeholder="User ID"
+												required="required" />
+										</div>
+									</div>
+									<div class="row mt-2">
+										<div class="col-md-6">
+											<label class="labels">Age</label> <input class="form-control"
+												th:value="${profile.age}" type="number" name="age"
+												placeholder="Age" required="required" />
+										</div>
+										<div class="col-md-6">
+											<label class="labels">Gender</label> <input
+												class="form-control" th:value="${profile.gender}"
+												type="text" name="gender" placeholder="Gender"
+												required="required" />
+										</div>
+									</div>
+									<div class="row mt-3">
+										<div class="col-md-6">
+											<label class="labels">PhoneNumber</label> <input
+												class="form-control" th:value="${profile.phoneNumber}"
+												type="text" name="phoneNumber" placeholder="03XX-XXXXXXX"
+												required="required" />
+										</div>
+										<div class="col-md-6">
+											<label class="labels">Birth-Date</label> <input
+												class="form-control" type="date"
+												th:value="${profile.birthDate}" name="birthDate"
+												placeholder="Birth-Date" required="required" />
+										</div>
+									</div>
+									<div class="row mt-3">
+										<div class="col-md-12">
+											<label class="labels">Address</label> <input
+												class="form-control" th:value="${profile.address}"
+												type="text" name="address" placeholder="Address"
+												required="required" />
+										</div>
+										<div class="col-md-12">
+											<label class="labels">About Me</label>
+											<textarea class="form-control" name="aboutMe"
+												th:value="${profile.aboutMe}"
+												placeholder="Description(1-200 words)" required="required"> 
+				                </textarea>
+										</div>
+									</div>
+									<div class="mt-5 text-center">
+										<button class="btn btn-primary profile-button" type="submit">Save
+											Profile</button>
+										<button class="btn btn-danger " type="reset">Reset
+											Profile</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="p-3 py-5">
+									<div
+										class="d-flex justify-content-between align-items-center experience">
+										<span>Edit Experience</span><span
+											class="border px-3 p-1 add-experience"><i
+											class="fa fa-plus"></i>&nbsp;Experience</span>
+									</div>
+									<br>
+									<div class="col-md-12">
+										<label class="labels">Work</label> <input class="form-control"
+											th:value="${profile.work}" type="text" name="work"
+											placeholder="Work" required="required" />
+
+									</div>
+									<br>
+									<div class="col-md-12">
+										<label class="labels">Start Date</label> <input
+											class="form-control" type="date"
+											th:value="${profile.startDate}" name="startDate"
+											placeholder="Start-Date" required="required" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</main>
+		<div class="ttr-overlay"></div>
+	</section>
+</body>
+</html>

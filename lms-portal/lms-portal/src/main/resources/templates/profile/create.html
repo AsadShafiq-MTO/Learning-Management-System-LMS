@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en" xmlns:th="htttp://www.thymeleaf.org" th:replace="student/base-dashboard::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<section>
+		<!--Main container start -->
+		<main class="ttr-wrapper bg-primary">
+			<div class="container-fluid">
+				<div class="db-breadcrumb">
+					<h4 class="breadcrumb-title">User Profile</h4>
+					<ul class="db-breadcrumb-list">
+						<li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+						<li>User Profile</li>
+					</ul>
+				</div>
+				<div class="row">
+					<!-- Your Profile Views Chart -->
+					<div class="col-lg-12 m-b30 ">
+						<div class="widget-box bg-success">
+
+							<div class="widget-inner">
+								<form class="edit-profile m-b30" th:action="@{/add-profile}"
+									th:object="${profile}" enctype="multipart/form-data" method="post">
+									<div class="card">
+										<div class="card-body">
+											<div class="d-flex flex-column align-items-center text-center">
+											   <img id="thumbnail" alt="Profile Image" src="https://bootdey.com/img/Content/avatar/avatar7.png"
+													 class="rounded-circle"	width="150" >												
+											<div class="form-group row">
+											
+											<label for="fileImage" class="col-sm-4 col-form-label">Upload Image</label>
+											<div class="col-sm-6">
+											 <input name="fileImage"  type="file" class="form-control"
+									           th:value="${profile.image}" id="fileImage" accept="image/png,image/jpeg" required="required" />
+											</div>
+											</div>
+										</div>
+										</div>
+									</div>
+									<div class="">
+										<div class="form-group row">
+											<div class="col-sm-10  ml-auto">
+												<h3>1. Personal Details</h3>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">Name</label>
+											<div class="col-sm-7">
+												<input class="form-control" th:value="${profile.nikeName}"
+													type="text" name="nikeName" placeholder="Nike Name" required="required" />
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">Age</label>
+											<div class="col-sm-7">
+												<input class="form-control" th:value="${profile.age}"
+													type="number" name="age" placeholder="Age" required="required" />
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">Gender</label>
+											<div class="col-sm-7">
+												<input class="form-control" th:value="${profile.gender}"
+													type="text" name="gender" placeholder="Gender" required="required" />
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">Phone No.</label>
+											<div class="col-sm-7">
+												<input class="form-control"
+													th:value="${profile.phoneNumber}" type="text"
+													name="phoneNumber" placeholder="03XX-XXXXXXX" required="required" />
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">Birth-Date</label>
+											<div class="col-sm-7">
+												<input class="form-control" type="date"
+													th:value="${profile.birthDate}" name="birthDate"
+													placeholder="Date-of-Birth" required="required" />
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">Start Date</label>
+											<div class="col-sm-7">
+												<input class="form-control" type="date"
+													th:value="${profile.startDate}" name="startDate"
+													placeholder="Start Date" required="required" />
+											</div>
+										</div>						
+
+										<div class="seperator"></div>
+
+										<div class="form-group row">
+											<div class="col-sm-10 ml-auto">
+												<h3>2. Address</h3>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">Address</label>
+											<div class="col-sm-7">
+												<input class="form-control" th:value="${profile.address}"
+													type="text" name="address" placeholder="Address" required="required" />
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">Work</label>
+											<div class="col-sm-7">
+												<input class="form-control" th:value="${profile.work}"
+													type="text" name="work" placeholder="Work" required="required" />
+											</div>
+										</div>	
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">About Me</label>
+											<div class="col-sm-7">
+											     <textarea class="form-control" name="aboutMe" 
+											          th:value="${profile.aboutMe}" placeholder="Description(1-200 words)" required="required" > 
+										         </textarea>												
+											</div>
+										</div>
+										
+										<!-- <div class="form-group row">
+										<label class="col-sm-2 col-form-label">User ID</label>
+										<div class="col-sm-7">
+										<select  class="form-control" th:value="${profile.register}">										
+										<option value="">Nothing selected</option>
+										<option th:each="register: ${registers}"
+										        th:value="${register.id}"
+										        th:utext="${register.id}" />										
+										</select>
+										</div>
+										</div> -->
+										
+										<!-- <div class="form-group">
+										<label class="sr-only">Id</label> <input type="text"
+											id="txtId" name="id" size="3" readonly class="form-control">
+									     </div> -->
+										
+										<!-- th:value="${profile.register}" -->
+										
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">User ID</label>
+											<div class="col-sm-7">
+												<input class="form-control" th:value="${profile.register}"
+													type="text" name="register" placeholder="User ID"  />
+											</div>
+										</div>	
+									</div>
+									<div class="">
+										<div class="">
+											<div class="row">
+												<div class="col-sm-2"></div>
+												<div class="col-sm-7">
+													<button type="submit" class="btn">Save</button>
+													<button type="reset" class="btn-secondry">Cancel</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- Your Profile Views Chart END-->
+				</div>
+			</div>
+		</main>
+		<div class="ttr-overlay"></div>		
+	</section>
+</body>
+</html>

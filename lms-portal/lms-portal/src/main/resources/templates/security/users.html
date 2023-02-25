@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="htttp://www.thymeleaf.org" th:replace="admin/base-dashboard::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>LMS</title>
+</head>
+<body>
+	<section class="wrapper bg-info">	
+		<!--Main container start -->
+		<main class="ttr-wrapper">
+			<div class="container-fluid ">
+				<div class="db-breadcrumb ">
+					<h4 class="breadcrumb-title">Registered User List</h4>
+					<ul class="db-breadcrumb-list">
+						<li><a th:href="@{/home}"><i class="fa fa-home"></i>Home</a></li>
+						<li>User</li>
+					</ul>					
+				</div>
+				<div class="row  mt-5">
+					<div class="container">
+						<section class="panel table table-bordered">
+							<div class="panel-heading" style="padding: 10px">All Users
+								Register</div>
+							<div class="panel-body">
+								<table class="table table-striped table-advance table-hover">
+									<tbody>
+										<tr>
+											<th></th>
+											<th><i class="icon_profile"></i> Full Name</th>											
+											<th><i class="icon_calendar"></i> E-mail</th>
+											<th><i class="icon_cogs"></i>Role Assign</th>
+											<th><i class="icon_cogs"></i> Action</th>
+										</tr>
+										<tr th:each="register:${registers}">
+											<td><i class="fa fa-table"></i></td>
+											<td th:text="${register.name}"></td>											
+											<td th:text="${register.email}"></td>
+											<td >
+											<a id="display"
+											   th:href="@{'/security/user/Edit/'+${register.id}}"
+											   class="btn btn-primary">
+											   <i class="icon_pencil-edit"></i>
+											   Manage Roles		
+											</a>											
+											</td>
+											<td>
+												<div class="btn-group">													
+													 <a class="btn bg-success ml-2">
+														<i class="fas fa-user-edit ml-2"></i>
+													 </a> 
+													 <a	class="btn bg-danger ml-2" 
+													    onclick="return confirm('Are you sure you want delete?')"
+														th:href="@{'/security/user/delete/'+${register.id}}">
+														<i class="fas fa-user-times ml-2"></i>
+													</a>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="panel-footer" style="padding: 10px">Number of
+								Records: 8</div>
+						</section>						
+					</div>
+				</div>
+			</div>			
+		</main>	
+	</section>	
+</body>
+</html>
